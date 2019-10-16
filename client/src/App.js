@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
+import Start from "./components/Start";
 
 class App extends Component {
   constructor(props) {
@@ -21,13 +22,7 @@ class App extends Component {
     return (
       <div className="App">
         <p>{this.state.apiResponse}</p>
-        <img
-          src={require("./static/cp.jpg")}
-          alt="cp"
-          width="328"
-          height="328"
-        />
-        <p>Tjenare, mitt namn är Christopher, hue hue!</p>
+        <Start />
       </div>
     );
   }
