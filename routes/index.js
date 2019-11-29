@@ -39,40 +39,51 @@ router.get('/testdb', function(req, res, next){
 })
 
 const insertTestData = async () => {
-  const questionNode6 = new models.QuestionNode({
-    question: 'Question Node 6?'
+
+  const questionNode8 = new models.QuestionNode({
+    answer: 'yes'
   });
 
   const questionNode7 = new models.QuestionNode({
-    question: 'Question Node 7?'
-  });
-  const questionNode4 = new models.QuestionNode({
-    question: 'Question Node 4?'
+    answer: 'no'
   });
 
-  const questionNode5 = new models.QuestionNode({
-    question: 'Question Node 533?'
+  const questionNode6 = new models.QuestionNode({
+    answer: 'no'
   });
-  
-  const questionNode2 = new models.QuestionNode({
-    question: 'Who are you?3',
-    children:[questionNode6, questionNode7]
+ 
+  const questionNode5 = new models.QuestionNode({
+    answer: 'yes'
+  });
+
+  const questionNode4 = new models.QuestionNode({
+    followUpQuestion: 'Question Node 4?',
+    answer: 'yes'
   });
 
   const questionNode3 = new models.QuestionNode({ 
     question: 'Who are we3?',
-    children:[questionNode4, questionNode5]
+    answer: 'yes',
+    children:[questionNode7, questionNode8]
+  });
+
+  const questionNode2 = new models.QuestionNode({
+    question: 'Who are you?3',
+    answer: 'no',
+    children:[questionNode5, questionNode6]
   });
 
   const questionNode1 = new models.QuestionNode({
-    question: 'Who am I3?',
-    children: [questionNode2, questionNode3]
+    followUpQuestion: 'Who am I3?',
+    answer: 'yes',    
+    children: [questionNode3, questionNode4]
   });
 
   const questionTree = new models.QuestionTree({
     id: 1341134,
     heading: 'Hehe answer me this!',
-    children:[questionNode1]
+    question: 'Init question?',
+    children:[questionNode1, questionNode2]
   });
 
   dbConnection.then(() => {

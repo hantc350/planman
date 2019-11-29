@@ -1,7 +1,11 @@
 var mongoose = require('mongoose');
 
 const questionNodeSchema = new mongoose.Schema({
-    question:{
+    answer:{
+        type: String,
+        default: "answer"
+    },
+    followUpQuestion:{
         type: String,
         default: "Question Node?"
     },
@@ -18,6 +22,10 @@ const questionTreeSchema = new mongoose.Schema({
     heading:{
         type: String,
         default: "Heading"
+    },
+    question:{
+        type: String,
+        default: "Question???"
     },
     children:{
         type:[questionNodeSchema]

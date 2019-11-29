@@ -1,7 +1,11 @@
 var mongoose = require('mongoose');
 
 const questionNodeSchema = new mongoose.Schema({
-    question:{
+    answer:{
+        type: String,
+        default: "answer"
+    },
+    followUpQuestion:{
         type: String,
         default: "Question Node?"
     },
