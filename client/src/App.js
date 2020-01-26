@@ -1,6 +1,15 @@
 import React, { Component } from "react";
-import "./App.css";
-import Start from "./components/Start";
+
+// import Start from "./components/Start";
+// import QuestionContainer from "./components/QuestionContainer";
+// import QuestionContainerHooks from "./components/QuestionContainerHooks";
+// import AnswerContainer from "./components/AnswerContainer";
+import QuestionTreeContainer from "./components/QuestionTreeContainer";
+
+import { Provider } from "react-redux";
+import store from "./redux/store";
+import AnswerContainer from "./components/AnswerContainer";
+
 
 class App extends Component {
   constructor(props) {
@@ -20,10 +29,14 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <p>{this.state.apiResponse}</p>
-        <Start />
-      </div>
+      <Provider store={store}>
+        <div className="App">
+          <p>{this.state.apiResponse}</p>
+          <QuestionTreeContainer />
+          {/* <AnswerContainer /> */}
+
+        </div>
+      </Provider>
     );
   }
 }
