@@ -12,3 +12,17 @@ export const deleteQuestionTree = () => {
     type: DELETE_QUESTIONTREE
   };
 };
+
+/*
+export const postQuestionTree = () => {
+  fetch("")
+.then(res => res.json())
+.then(questions =>
+  dispatch({
+    type: GET_QUESTIONS,
+    payload: questions
+  })
+);
+};
+
+*/

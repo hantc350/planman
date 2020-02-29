@@ -24,7 +24,7 @@ class App extends Component {
   }
 
   componentWillMount() {
-    this.callAPI();
+    //this.callAPI();
   }
 
   render() {

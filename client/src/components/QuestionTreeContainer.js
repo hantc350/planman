@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { addQuestionTree, deleteQuestionTree, addAnswerChild } from "../redux";
+import { testAction } from "../redux";
+import { submitTree } from "../redux";
 
 import QuestionContainer from "./QuestionContainerHooks";
 import AnswerContainer from "./AnswerContainer";
+import { render } from "jade";
 
 function QuestionTreeContainer() {
   const [title, setTitle] = useState("");
@@ -40,8 +43,45 @@ function QuestionTreeContainer() {
     console.log(children);
   }
 
+  function submitTree(event){
+    event.preventDefault();
+    
+    console.log(event);
+    const data = new FormData(event.target);
+    console.log(data);
+    // create a new XMLHttpRequest
+    var xhr = new XMLHttpRequest()
+
+    // get a callback when the server responds
+    xhr.addEventListener('load', () => {
+      // update the state of the component with the result here
+      console.log(xhr.responseText)
+    })
+    // open the request with the verb and the url
+    xhr.open('POST', 'http://localhost:9000/questiontree')
+    // send the request
+
+    xhr.send(JSON.stringify(data));
+
+    // fetch('localhost:9000/testdb', {
+    //   method: 'POST',
+    //   body: data,
+    // });
+  };
+ 
+  /*
+  const testAction = () => {
+    const action = {
+      type: ACTION_TYPE,
+      payload: "1337"
+    };
+    dispatch(action)
+  }
+  */
+
   return (
-    <form id="treeForm">
+    <div>
+    <form id="treeForm" onSubmit={() => dispatch(submitTree())}>
       <label>Title</label>
       <input type="text" name="title" onChange={(e) => setTitle(e.target.value)}></input>
       <label>Question</label>
@@ -87,7 +127,16 @@ function QuestionTreeContainer() {
       </button>
     </div> */}
     </form >
+<br/>
+  <button onClick={() => runTestAction}>Test Action</button>
+  </div>
   );
+
+const runTestAction = () =>{
+  const returnedVal = dispatch(testAction());
+  setTitle(returnedVal.test.text)
+}
+
 }
 
 export default QuestionTreeContainer;

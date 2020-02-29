@@ -32,8 +32,9 @@ router.get('/questiontree/:documentId', function(req, res, next){
 });
 
 //Test with dummy data
-router.get('/testdb', function(req, res, next){
+router.post('/testdb', function(req, res, next){
     insertTestData();
+
     res.render('index', { title: 'MongoDB' });
 
 })
