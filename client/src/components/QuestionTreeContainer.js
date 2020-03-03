@@ -2,11 +2,12 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { addQuestionTree, deleteQuestionTree, addAnswerChild } from "../redux";
 import { testAction } from "../redux";
-import { submitTree } from "../redux";
+import { submitQuestionTree } from "../redux";
 
 import QuestionContainer from "./QuestionContainerHooks";
 import AnswerContainer from "./AnswerContainer";
 import { render } from "jade";
+import { ACTION_TYPE } from "../redux/test/testTypes";
 
 function QuestionTreeContainer() {
   const [title, setTitle] = useState("");
@@ -38,35 +39,30 @@ function QuestionTreeContainer() {
 
 
   function outputTree() {
-    console.log("title: " + title);
-    console.log("initQuestion: " + initQuestion);
-    console.log(children);
+    console.log("title: " + title)
+    console.log("initQuestion: " + initQuestion)
+    console.log(children)
   }
 
   function submitTree(event){
-    event.preventDefault();
-    
-    console.log(event);
-    const data = new FormData(event.target);
-    console.log(data);
-    // create a new XMLHttpRequest
-    var xhr = new XMLHttpRequest()
+    event.preventDefault();   
 
-    // get a callback when the server responds
-    xhr.addEventListener('load', () => {
-      // update the state of the component with the result here
-      console.log(xhr.responseText)
-    })
-    // open the request with the verb and the url
-    xhr.open('POST', 'http://localhost:9000/questiontree')
-    // send the request
+    fetch('http://localhost:9000/questiontree', {method: "post", body: JSON.stringify("testing post req...")}).then(response => {response.json(); console.log(response)});
 
-    xhr.send(JSON.stringify(data));
+    // // create a new XMLHttpRequest
+    // var xhr = new XMLHttpRequest()
 
-    // fetch('localhost:9000/testdb', {
-    //   method: 'POST',
-    //   body: data,
-    // });
+    // // get a callback when the server responds
+    // xhr.addEventListener('load', () => {
+    //   // update the state of the component with the result here
+    //   console.log(xhr.responseText)
+    // })
+    // // open the request with the verb and the url
+    // xhr.open('POST', 'http://localhost:9000/questiontree')
+    // // send the request
+
+    // xhr.send(JSON.stringify(data));
+
   };
  
   /*
@@ -81,7 +77,7 @@ function QuestionTreeContainer() {
 
   return (
     <div>
-    <form id="treeForm" onSubmit={() => dispatch(submitTree())}>
+    <form id="treeForm" onSubmit={(e) => dispatch(submitTree(e))}>
       <label>Title</label>
       <input type="text" name="title" onChange={(e) => setTitle(e.target.value)}></input>
       <label>Question</label>

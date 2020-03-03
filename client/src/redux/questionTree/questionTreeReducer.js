@@ -1,5 +1,4 @@
-import { ADD_QUESTIONTREE } from "./questionTreeTypes";
-import { DELETE_QUESTIONTREE } from "./questionTreeTypes";
+import { ADD_QUESTIONTREE, SUBMIT_QUESTIONTREE, DELETE_QUESTIONTREE } from "./questionTreeTypes";
 
 const initialState = {
   title:"Default Title",
@@ -7,7 +6,7 @@ const initialState = {
   children: [],
   numOfQuestionTrees: 0,
   questionTrees: [],
-  questionTree: {}
+  questionTree: {},  
 };
 
 const questionTreeReducer = (state = initialState, action) => {
@@ -22,6 +21,10 @@ const questionTreeReducer = (state = initialState, action) => {
         ...state,
         numOfQuestionTrees: state.numOfQuestionTrees - 1
       };
+      case SUBMIT_QUESTIONTREE:        
+        return{
+          ...state
+        }
     default:
       return state;
   }

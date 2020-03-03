@@ -6,7 +6,7 @@ const initialState = {
 
 const testReducer = (state = initialState, action) => {
     switch(action.type){
-        case ACTION_TYPE:
+        case ACTION_TYPE:            
             return{
                 ...state,
                 text: state.text + " bajs"
@@ -17,5 +17,3 @@ const testReducer = (state = initialState, action) => {
 }
 
 export default testReducer;
-
-

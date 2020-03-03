@@ -1,5 +1,6 @@
 import { ADD_QUESTIONTREE } from "./questionTreeTypes";
 import { DELETE_QUESTIONTREE } from "./questionTreeTypes";
+import { SUBMIT_QUESTIONTREE } from "./questionTreeTypes";
 
 export const addQuestionTree = () => {
   return {
@@ -13,16 +14,9 @@ export const deleteQuestionTree = () => {
   };
 };
 
-/*
-export const postQuestionTree = () => {
-  fetch("")
-.then(res => res.json())
-.then(questions =>
-  dispatch({
-    type: GET_QUESTIONS,
-    payload: questions
-  })
-);
-};
 
-*/
+export const submitQuestionTree = () => {
+  return {
+    type: SUBMIT_QUESTIONTREE
+  }
+};

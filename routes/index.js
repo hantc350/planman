@@ -16,12 +16,13 @@ router.get('/', function(req, res, next) {
 
 //post question tree to database
 router.post('/questiontree', function(req, res, next){
-  dbConnection.then(() => {
-    dbClient.db(dbName).collection('questiontrees').insertOne(req.data, (err, insertedDoc) => {
-      if(err) throw err;
-      res.send({documentId: insertedDoc.insertedId});
-    })
-  }) 
+  res.send({status: "Ok."});
+  // dbConnection.then(() => {
+  //   dbClient.db(dbName).collection('questiontrees').insertOne(req.data, (err, insertedDoc) => {
+  //     if(err) throw err;
+  //     res.send({documentId: insertedDoc.insertedId});
+  //   })
+  // }) 
 });
 
 //get question tree from database
